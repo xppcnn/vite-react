@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 // import { persistStore, persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 // import { userSlice } from './slice/user.slice';
@@ -54,6 +54,14 @@ export const rootStore = configureStore({
 // export const persistor = persistStore(rootStore);
 // 获取全部store数据类型
 // export type RootState = ReturnType<typeof rootStore.getState>;
-export type RootState = ReturnType<any>;
+
+export type AppDispatch = typeof rootStore.dispatch | any;
+export type RootState = ReturnType<typeof rootStore.getState |any> ;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
 // eslint-disable-next-line
 // export default { store, persistor };

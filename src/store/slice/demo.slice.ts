@@ -20,4 +20,5 @@ const demoSlice = createSlice({
   extraReducers: {},
 });
 
+export const { toggleMenusCollapsed } = demoSlice.actions;
 export default demoSlice
