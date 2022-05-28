@@ -8,13 +8,12 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.7.1",
     "antd": "^4.17.3",
     "antd-mobile": "^5.0.0-rc.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.0",

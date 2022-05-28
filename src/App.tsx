@@ -1,25 +1,19 @@
 import { useState } from 'react'
 import { Button } from 'antd-mobile'
-import { useSelector, useDispatch, RootState } from './store';
-import { toggleMenusCollapsed } from './store/slice/demo.slice';
+import userStore from './store'
 import logo from './logo.svg'
 import './App.less'
 
 function App() {
-  const dispatch = useDispatch()
-  const [count, setCount] = useState(0)
-  const { collapsed } = useSelector((state: RootState) => state.demo);
-
-  console.log(collapsed);
-  
+  const { count, add } = userStore((state) => ({ ...state }));
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <Button  onClick={() => dispatch(toggleMenusCollapsed())}>
-            count is: {collapsed}
+          <Button onClick={add}>
+            count is: {count}
           </Button>
         </p>
         <p>
