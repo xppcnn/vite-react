@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 // 实时刷新
-import reacrRefresh from '@vitejs/plugin-react-refresh'
+// import reacrRefresh from '@vitejs/plugin-react-refresh'
 // 按需加载
 import vitePluginImp from 'vite-plugin-imp'
 import styleImport from "vite-plugin-style-import";
@@ -10,7 +10,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react(),
-    reacrRefresh(),
+    // reacrRefresh(),
     vitePluginImp({
       libList: [
         {
