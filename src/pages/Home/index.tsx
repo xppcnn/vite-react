@@ -1,8 +1,8 @@
 import React from 'react'
-
+import styles from './index.module.less'
 const Home = () => {
   return (
-    <div>
+    <div className={styles.home}>
       home
     </div>
   )

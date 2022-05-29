@@ -44,16 +44,17 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://47.99.134.126:28019/api/v1',
+        target: 'https://cloud.tongfudun.com',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, '')
+        // rewrite: path => path.replace(/^\/api/, '')
       }
     }
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@store': path.resolve(__dirname, 'src/store')
+      '@store': path.resolve(__dirname, 'src/store'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
     }
   },
 })
