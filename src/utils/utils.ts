@@ -14,8 +14,9 @@ export function isMobile(): boolean {
  * @returns
  */
 export const isInWeChatMP = (): boolean => {
-   // @ts-ignore
-  const flag = navigator.userAgent.match(/miniprogram/i) ||window.__wxjs_environment === "miniprogram"
+  const flag =
+    // @ts-ignore
+    navigator.userAgent.match(/miniprogram/i) || window.__wxjs_environment === 'miniprogram';
   return flag === null;
 };
 
@@ -26,14 +27,14 @@ export const isInWeChatMP = (): boolean => {
 export const isWX = (): boolean => {
   const ua = navigator.userAgent.toLowerCase();
   // @ts-ignore
-  return ua.match(/MicroMessenger/i) == "micromessenger";
+  return ua.match(/MicroMessenger/i) === 'micromessenger';
 };
 
 /**
  * bs64转blob
  */
 
-export const bs64ToBlob = (data: string, type: string = "image/jpeg") => {
+export const bs64ToBlob = (data: string, type = 'image/jpeg') => {
   const bstr = atob(data);
   let n = bstr.length;
   const u8arr = new Uint8Array(n);
@@ -41,12 +42,12 @@ export const bs64ToBlob = (data: string, type: string = "image/jpeg") => {
     u8arr[n] = bstr.charCodeAt(n);
   }
   return new Blob([u8arr], { type });
-}
+};
 
 /**
- * blob转bs64 
- * @param blob  
-*/ 
+ * blob转bs64
+ * @param blob
+ */
 export const blobToBs64 = (blob: Blob) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -55,26 +56,25 @@ export const blobToBs64 = (blob: Blob) => {
     };
     reader.readAsDataURL(blob);
   });
-}
+};
 
-/** 
- * url转bs64  
- * @param url   
-*/
+/**
+ * url转bs64
+ * @param url
+ */
 
 export const urlToBs64 = (url: string) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.responseType = "blob";
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
     xhr.onload = () => {
       if (xhr.status === 200) {
-        blobToBs64(xhr.response).then(res => {
+        blobToBs64(xhr.response).then((res) => {
           resolve(res);
         });
       }
     };
     xhr.send();
   });
-}
- 
+};
