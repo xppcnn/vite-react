@@ -1,23 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import loadable from '@loadable/component';
 import App from '../App';
+import Home from '@pages/Home';
 
-function loadRoutes() {
-  const context = import.meta.globEager('../pages/*/index.tsx');
-  const routes: any[] = [<Route exact path="/" component={App} key="router-App"></Route>];
-  const pages = Object.keys(context);
-  for (let key of pages) {
-    const page = context[key].default;
-    const name = key.replace(/(\.\.\/pages\/|\/index.tsx)/g, '');
-    routes.push(<Route exact path={'/' + name} component={page} key={'router-' + name}></Route>);
-  }
-  return routes;
-}
+const My = loadable(() => import('@pages/My'), { fallback: <div>....</div> });
 
 export default function AppRouter() {
   return (
-    <Router>
-      <Switch>{loadRoutes()}</Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/my" element={<My />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
