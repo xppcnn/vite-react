@@ -1,57 +1,38 @@
-import { useEffect } from 'react';
 import { Button } from 'antd-mobile';
-import userStore from './store';
-import request from '@utils/request';
-import logo from './logo.svg';
+import shallow from 'zustand/shallow';
+import useStore from '@stores/index';
+import { UserProps } from '@stores/type';
+import useRequest from '@hooks/useRequest';
+import Home from './pages/Home/index';
 import './App.less';
-interface User {
-  type: number;
-}
-function App() {
-  const { count, add } = userStore((state) => ({ ...state }));
 
-  useEffect(() => {
-    request<User>({
-      url: '/product/queryHomePageGoods',
-      method: 'GET',
-      params: {
-        categoryId: 10000,
-        type: 1
-      }
-    }).then((response) => {
-      console.log(response.data.type);
-    });
-  }, []);
+interface User {
+  title: string;
+  titleEn: string | null;
+  type: number;
+  children: any[];
+}
+
+function App() {
+  const { count, add } = useStore(
+    (state: UserProps) => ({ count: state.count, add: state.add }),
+    shallow
+  );
+  const { data, error, response } = useRequest<User>({
+    url: '/product/queryHomePageGoods',
+    params: { categoryId: 1000, type: 1 }
+  });
+
+  console.log('🚀 ~ file: App.tsx ~ line 14 ~ App ~ data, error ', data, error, response);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
           <Button onClick={add}>count is: {count}</Button>
         </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
+        {/* <p>{data?.type}</p> */}
+        <Home />
       </header>
     </div>
   );

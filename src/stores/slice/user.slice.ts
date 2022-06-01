@@ -6,6 +6,10 @@ const createUserSlice: StoreSlice<UserProps> = (set, get) => ({
   add: () => {
     const state = get();
     set({ count: state.count + 1 });
+  },
+  dec: () => {
+    const state = get();
+    set({ count: state.count - 1 });
   }
 });
 

@@ -19,8 +19,9 @@
     "noUnusedParameters": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@store/*": ["./src/store/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@stores/*": ["./src/stores/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["./src"]

@@ -10,6 +10,7 @@ export type StoreSlice<T extends object, E extends object = T> = (
 export interface UserProps {
   count: number;
   add: () => void;
+  dec: () => void;
 }
 
 // 类型声明

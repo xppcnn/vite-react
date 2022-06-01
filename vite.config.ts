@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 // 实时刷新
 // import reacrRefresh from '@vitejs/plugin-react-refresh'
 // 按需加载
-import vitePluginImp from 'vite-plugin-imp'
-import styleImport from "vite-plugin-style-import";
+import vitePluginImp from 'vite-plugin-imp';
+import styleImport from 'vite-plugin-style-import';
 import path from 'path';
 
 export default defineConfig({
@@ -15,20 +15,20 @@ export default defineConfig({
       libList: [
         {
           libName: 'antd',
-          style: (name) => `antd/lib/${name}/style/index.less`,
-        },
-      ],
+          style: (name) => `antd/lib/${name}/style/index.less`
+        }
+      ]
     }),
     styleImport({
       libs: [
         {
-          libraryName: "antd-mobile",
-          base: "antd-mobile/es/global",
+          libraryName: 'antd-mobile',
+          base: 'antd-mobile/es/global',
           resolveComponent: (name) => `antd-mobile/es/components/${name}`,
-          resolveStyle: () => "antd-mobile/es/global/global.css",
-        },
-      ],
-    }),
+          resolveStyle: () => 'antd-mobile/es/global/global.css'
+        }
+      ]
+    })
   ],
   css: {
     preprocessorOptions: {
@@ -36,7 +36,7 @@ export default defineConfig({
         // 支持内联 JavaScript
         javascriptEnabled: true,
         // 重写 less 变量，定制样式
-        modifyVars: { '@primary-color': '#1DA57A' },
+        modifyVars: { '@primary-color': '#1DA57A' }
       }
     }
   },
@@ -45,7 +45,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'https://cloud.tongfudun.com',
-        changeOrigin: true,
+        changeOrigin: true
         // rewrite: path => path.replace(/^\/api/, '')
       }
     }
@@ -53,8 +53,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@store': path.resolve(__dirname, 'src/store'),
+      '@stores': path.resolve(__dirname, 'src/stores'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@hooks': path.resolve(__dirname, 'src/hooks')
     }
-  },
-})
+  }
+});
