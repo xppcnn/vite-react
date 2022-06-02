@@ -3,9 +3,9 @@ import { Button } from 'antd-mobile';
 import shallow from 'zustand/shallow';
 import useStore from '@stores/index';
 import { UserProps } from '@stores/type';
-import styles from './index.module.less';
 import request from '@/utils/request';
-import useRequest from '../../hooks/useRequest';
+import styles from './index.module.less';
+
 interface User {
   title: string;
   titleEn: string | null;
@@ -13,10 +13,7 @@ interface User {
   children: any[];
 }
 const Home = () => {
-  const { count, dec } = useStore(
-    (state: UserProps) => ({ count: state.count, dec: state.dec }),
-    shallow
-  );
+  const { dec } = useStore((state: UserProps) => ({ count: state.count, dec: state.dec }), shallow);
   useEffect(() => {
     request<User>({
       url: '/product/queryHomePageGoods',
@@ -37,7 +34,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       {/* <div>{data?.title}</div> */}
-      <Button onClick={dec}></Button>
+      <Button onClick={dec}>d</Button>
     </div>
   );
 };

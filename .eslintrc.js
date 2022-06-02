@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['alloy', 'alloy/typescript'],
+  extends: ['alloy', 'alloy/typescript', 'alloy/react'],
   env: {
     // 您的环境变量（包含多个预定义的全局变量）
     // Your environments (which contains several predefined global variables)
@@ -16,8 +16,17 @@ module.exports = {
     //
     // myGlobal: false
   },
+  plugins: ['import'],
   rules: {
     // 自定义您的规则
     // Customize your rules
+    semi: ['error', 'always'],
+    'no-tabs': 'off',
+    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
+    'import/no-unresolved': 'off',
+    'import/named': 'off',
+    'import/namespace': 2,
+    'import/default': 2,
+    'import/export': 2
   }
 };

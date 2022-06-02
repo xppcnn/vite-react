@@ -49,7 +49,7 @@ export const bs64ToBlob = (data: string, type = 'image/jpeg') => {
  * @param blob
  */
 export const blobToBs64 = (blob: Blob) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = () => {
       resolve(reader.result);
@@ -64,7 +64,7 @@ export const blobToBs64 = (blob: Blob) => {
  */
 
 export const urlToBs64 = (url: string) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.responseType = 'blob';
