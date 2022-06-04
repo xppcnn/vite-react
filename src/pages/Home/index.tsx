@@ -1,6 +1,7 @@
 import { memo, useEffect } from 'react';
 import { Button } from 'antd-mobile';
 import shallow from 'zustand/shallow';
+import { Outlet } from 'react-router-dom';
 import useStore from '@stores/index';
 import { UserProps } from '@stores/type';
 import request from '@/utils/request';
@@ -35,6 +36,7 @@ const Home = () => {
     <div className={styles.home}>
       {/* <div>{data?.title}</div> */}
       <Button onClick={dec}>d</Button>
+      <Outlet />
     </div>
   );
 };
