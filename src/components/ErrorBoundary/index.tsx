@@ -16,16 +16,12 @@ class ErrorBoundary extends Component {
     errorTip: '你弄啥了？ 未知错误'
   };
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log(
-      '🚀 ~ file: index.tsx ~ line 19 ~ ErrorBoundary ~ componentDidCatch ~ ErrorInfo',
-      error.toString()
-    );
     let tip = '你弄啥呢？';
     if (errorInfo.componentStack.indexOf('LoadableCom') > -1) {
       tip = '额， 大概是路由配置的pageUrl出错了吧';
     }
-    if (error.toString().indexOf('路由id重复') > -1) {
-      tip = '额， 大概是路由id重复';
+    if (error.toString().indexOf('routerId error') > -1) {
+      tip = '额， 大概是路由id问题';
     }
     this.setState({ errorTip: tip });
   }

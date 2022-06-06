@@ -1,3 +1,4 @@
+import BaseLayout from '@/layouts/baseLayout';
 import LoadableCom from './loadComponent';
 import { RouteItem } from './types';
 
@@ -7,16 +8,21 @@ export const routeConfig: RouteItem[] = [
     id: '0',
     component: <LoadableCom pageUrl="/My" />
   },
-
+  {
+    path: '',
+    id: '2',
+    component: <BaseLayout />
+  },
   {
     path: 'home',
-    id: '1',
+    id: '2-1',
+    parentId: '2',
     component: <LoadableCom pageUrl="/Home" />
   },
   {
     path: 'my',
-    id: '1-1',
-    parentId: '1',
+    id: '2-2',
+    parentId: '2',
     component: <LoadableCom pageUrl="/My" />
   },
   {

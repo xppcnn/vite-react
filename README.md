@@ -6,3 +6,4 @@
 目前存在不同 storeSlice 文件中相同的 state 被别合并 待优化 考虑加入 namespace
 
 扫描 pages 文件下所有 tsx 文件，根据 routes 文件夹下 config 的 pageUrl 匹配相应组件，并 dynamic import
+router 配置扁平化 通过 id/parentId 生成嵌套关系

@@ -1,5 +1,4 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom';
-import ErrorBoundary from '@/components/ErrorBoundary';
 import { routeConfig } from './config';
 import { RouteItem, IRouteObject } from './types';
 
@@ -16,7 +15,7 @@ const generateRouterTree = (data: RouteItem[]) => {
   const tree: any[] = [];
   data.forEach((item: IRouteObject) => {
     if (map[item.id]) {
-      throw new Error('路由id重复');
+      throw new Error('routerId error :路由id重复');
     }
     map[item.id] = item;
     item.children = [];
@@ -25,6 +24,8 @@ const generateRouterTree = (data: RouteItem[]) => {
     if (item.parentId) {
       if (map[item.parentId]) {
         map[item.parentId].children.push(delComponentInObj(item));
+      } else {
+        throw new Error('routerId error :路由父级id不存在');
       }
     } else {
       tree.push(delComponentInObj(item));
@@ -34,16 +35,13 @@ const generateRouterTree = (data: RouteItem[]) => {
 };
 function GenerRouter() {
   const routerMap = generateRouterTree(routeConfig);
-  console.log('🚀 ~ file: index.tsx ~ line 37 ~ GenerRouter ~ routerMap', routerMap);
   const element = useRoutes(routerMap);
   return element;
 }
 export default function AppRouter() {
   return (
     <BrowserRouter>
-      <ErrorBoundary>
-        <GenerRouter />
-      </ErrorBoundary>
+      <GenerRouter />
     </BrowserRouter>
   );
 }
